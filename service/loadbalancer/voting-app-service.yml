@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: voting-service #just a name
+  labels:
+    name: voting-service
+    app: demo-voting-app
+spec:
+  type: LoadBalancer #The type of service: NodePort, ClusterIP, LoadBalancer
+  ports:
+    - targetPort: 80
+      port: 80 #This is the source port
+  selector:  #filers
+    name: voting-app-pod
+    app: demo-voting-app
